@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Programmatically Grounded, Compositionally Generalizable Robotic Manipulation">
+  <meta name="keywords" content="vision-language-action grounding, zero-shot generalization, compositional generalization, neurosymbolic learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Programmatically Grounded, Compositionally Generalizable Robotic Manipulation
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">
+            Programmatically Grounded, Compositionally Generalizable Robotic Manipulation 
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a 
+                href="https://renwang435.github.io/">Renhao Wang*
+              </a><sup>1</sup>,
+            </span>
+            <span class="author-block"> 
+              <a
+                href="https://jiayuanm.com/">Jiayuan Mao*
+              </a><sup>2</sup>,
+            </span>
+            <span class="author-block"> <a 
+              href="http://web.stanford.edu/~joycj/">Joy Hsu
+              </a><sup>3</sup>,
+            </span>
+            <span class="author-block"> <a
+                href="https://hangzhaomit.github.io/">Hang Zhao
+              </a><sup>1,4,5</sup>,
+            </span>
+            <span class="author-block"> <a
+              href="https://jiajunwu.com/">Jiajun Wu
+            </a><sup>3</sup>,
+            </span>
+            <span class="author-block"> <a 
+              href="https://yang-gao.weebly.com/">Yang Gao
+              </a><sup>1,4,5</sup>
+            </span><br>
+            <span class="authors-affiliation"><sup>1</sup>Tsinghua University</span>,
+            <span class="authors-affiliation"><sup>2</sup>MIT</span>,
+            <span class="authors-affiliation"><sup>3</sup>Stanford University</span>,
+            <span class="authors-affiliation"><sup>4</sup>Shanghai AI Lab</span>,
+            <span class="authors-affiliation"><sup>5</sup>Shanghai Qi Zhi Institute</span><br>
+            <br>
+            <div class="is-size-6 publication-authors">
+              <span style="font-size: 0.9em;">*Equal Contribution</span><br>
+              <span class="author-block">
+                International Conference on Learning Representations (ICLR) 2023 <span style="color: #a71ff5;">[Spotlight]</span>
+              </span>
+            </div>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://progport.github.io" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block"> 
+                <a href="https://progport.github.io" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <video controls muted loop autoplay playsinline height="100%" width="100%">
+      <source src="videos/teaser.mp4" type="video/mp4"/>
+    </video>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Robots operating in the real world require both rich manipulation skills 
+            as well as the ability to semantically reason about when to apply those skills. 
+            Towards this goal, recent works have integrated semantic representations from 
+            large-scale pretrained vision-language (VL) models into manipulation models, 
+            imparting them with more general reasoning capabilities. However, we show that 
+            the conventional <em>pretraining-finetuning</em> pipeline for integrating such 
+            representations entangles the learning of domain-specific action information and 
+            domain-general visual information, leading to less data-efficient training and poor 
+            generalization to unseen objects and tasks. To this end, we propose 
+            <strong>ProgramPort</strong>, a <em>modular</em> approach to better leverage pretrained 
+            VL models by exploiting the syntactic and semantic structures of language instructions. 
+            Our framework uses a semantic parser to recover an executable program, composed of 
+            functional modules grounded on vision and action across different modalities. 
+            Each functional module is realized as a combination of deterministic computation and 
+            learnable neural networks. Program execution produces parameters to general manipulation 
+            primitives for a robotic end-effector. The entire modular network can be trained with 
+            end-to-end imitation learning objectives. Experiments show that our model successfully 
+            disentangles action and perception, translating to improved zero-shot and compositional 
+            generalization in a variety of manipulation behaviors.
+          </p>
+          <br>
+          <br>
+        </div>
+
+        <h2 class="title is-2">Method</h2>
+        <!-- <br> -->
+        <div class="content has-text-justified">
+          <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+            <div class="column has-text-centered">
+              <video controls autoplay muted loop playsinline width="100%">
+                <source src="videos/method/method.mp4" type="video/mp4"/>
+              </video>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+
+
+        <h2 class="title is-2">Zero-Shot Generalization</h2>
+        <!-- <br> -->
+        <p>
+          Our benchmark extends the Ravens manipulation benchmark (Zeng et al., 2021 and Shridhar et al., 2022). In the zero-shot
+          portion of our test suite, tasks involve manipulating completely new objects, as well as objects of 
+          drastically different properties (shape, color or size).
+        </p>
+        <br>
+
+
+
+        <div class="content has-text-justified">
+          <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+            <div class="column has-text-centered">
+              <video autoplay muted loop playsinline width="100%">
+                <source src="videos/zero_shot/packing_box_pairs.mp4" type="video/mp4"/>
+              </video>
+            </div>
+            <div class="column has-text-centered">
+              <video autoplay muted loop playsinline width="100%">
+                <source src="videos/zero_shot/packing_google_objects_seq.mp4" type="video/mp4"/>
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+            <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+              <div class="column has-text-centered">
+                  <video autoplay muted loop playsinline width="100%">
+                      <source src="videos/zero_shot/packing_google_objects_group.mp4" type="video/mp4"/>
+                  </video>
+              </div>
+              <div class="column has-text-centered">
+                <video autoplay muted loop playsinline width="100%">
+                  <source src="videos/zero_shot/separating_small_piles.mp4" type="video/mp4"/>
+                </video>
+              </div>
+            </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+            <div class="column has-text-centered">
+              <video autoplay muted loop playsinline width="100%">
+                <source src="videos/zero_shot/separating_large_piles.mp4" type="video/mp4"/>
+              </video>
+            </div>
+            <div class="column has-text-centered">
+              <video autoplay muted loop playsinline width="100%">
+                <source src="videos/zero_shot/align_rope.mp4" type="video/mp4"/>
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+            <div class="column has-text-centered">
+              <video autoplay muted loop playsinline width="100%">
+                <source src="videos/zero_shot/packing_shapes.mp4" type="video/mp4"/>
+              </video>
+            </div>
+            <div class="column has-text-centered">
+                <video autoplay muted loop playsinline width="100%">
+                    <source src="videos/zero_shot/assembling_kits.mp4" type="video/mp4"/>
+                </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+            <div class="column has-text-centered">
+              <video autoplay muted loop playsinline width="100%">
+                <source src="videos/zero_shot/put_blocks_in_bowls.mp4" type="video/mp4"/>
+              </video>
+            </div>
+            <div class="column has-text-centered">
+                <video autoplay muted loop playsinline width="100%">
+                  <source src="videos/zero_shot/towers_of_hanoi.mp4" type="video/mp4"/>
+                </video>
+            </div>
+          </div>
+          <br>
+        </div>
+        <!-- <br>
+        <br> -->
+
+
+        <h2 class="title is-2">Compositional Generalization</h2>
+        <!-- <br> -->
+        <p>
+          We first train on tasks containing different objects, object properties 
+          such as color or shape, and other vision-language descriptors like relative spatial position. 
+          At test-time, we ask the agent to reason about novel <strong>combinations</strong> of concepts 
+          seen independently during <strong>different</strong> training tasks. For example, 
+          our training-testing flow for the <em>packing-shapes</em> task is shown:
+        </p>
+
+        <div class="content has-text-justified">
+          <div class="columns is-centered interpolation-panel" style="background: #FDFFFF;">
+            <div class="column has-text-centered">
+                <video autoplay muted loop playsinline width="100%">
+                    <source src="videos/compositional/pushing_shapes.mp4" type="video/mp4"/>
+                </video>
+            </div>
+          </div>
+      </div>
+      <br>
+      <br>
+
+      <h2 class="title is-2">Disentangled Vision and Action</h2>
+        <!-- <br> -->
+        <p>
+          ProgramPort's excellent performance is enabled by disentangling vision-language grounded from action 
+          understanding. Our modular design disentangles the learning for visual grounding modules, 
+          which identify and ground to a single visual concept at a time, and action modules, 
+          which parameterize general robotic manipulation primitives like picking and placing.
+          <br>
+          <br>
+          <strong>
+            This allows us to use large-scale pretrained vision-language models 
+            like CLIP for what they're good at (identifying task-agnostic vision-language semantics), 
+            while independently learning task-specific manipulation behaviors.
+          </strong>
+        </p>
+        <br>
+        <br>
+
+        <div class="content has-text-justified">
+          <div class="columns is-centered">
+              <img src="videos/cliport_attn.png" width="75%" height="auto">
+              <img src="videos/progport_attn.png" width="100%" height="auto">
+          </div>
+        </div>
+
+
+
+      <br/>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{wangprogrammatically,
+    title        = {Programmatically Grounded, Compositionally Generalizable Robotic Manipulation},
+    author       = {Wang, Renhao and Mao, Jiayuan and Hsu, Joy and Zhao, Hang and Wu, Jiajun and Gao, Yang},
+    booktitle    = {The Eleventh International Conference on Learning Representations}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <div class="columns is-centered"><p>
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          </p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
